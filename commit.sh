@@ -9,21 +9,29 @@ if [ ! -f "$CSV_FILE" ]; then
   exit 1
 fi
 
-# Read data from the CSV
-while IFS=',' read -r BugID Description Branch DevName Priority; do
-    # Skip the header row
-    if [ "$BugID" == "BugID" ]; then
+# Read data from the CSV (ensure that IFS is set correctly to avoid trailing whitespace issues)
+while IFS=',' read -r BugID Description Branch DevName Priority GitHubURL; do
+    # Skip the header row by checking if $BugID is the header value
+    if [[ "$BugID" == "BugID" ]]; then
         continue
     fi
     
     # Ensure that required fields are not empty
-    if [ -z "$BugID" ] || [ -z "$Description" ] || [ -z "$Branch" ] || [ -z "$DevName" ] || [ -z "$Priority" ]; then
+    if [ -z "$BugID" ] || [ -z "$Description" ] || [ -z "$Branch" ] || [ -z "$DevName" ] || [ -z "$Priority" ] || [ -z "$GitHubURL" ]; then
         echo "Error: Missing required field in CSV."
         exit 1
     fi
     
-    # Commit message template
-    COMMIT_MSG="BugID:$BugID CurrrntDateTime:$(date '+%Y-%m-%d %H:%M:%S') Branch:$Branch DevName:$DevName Priority:$Priority Excel Description:$Description"
+    # Trim whitespace from variables (sometimes there are extra spaces in CSV data)
+    BugID=$(echo "$BugID" | xargs)
+    Description=$(echo "$Description" | xargs)
+    Branch=$(echo "$Branch" | xargs)
+    DevName=$(echo "$DevName" | xargs)
+    Priority=$(echo "$Priority" | xargs)
+    GitHubURL=$(echo "$GitHubURL" | xargs)
+
+    # Commit message template (including GitHub URL)
+    COMMIT_MSG="BugID:$BugID CurrrntDateTime:$(date '+%Y-%m-%d %H:%M:%S') Branch:$Branch DevName:$DevName Priority:$Priority GitHubURL:$GitHubURL Excel Description:$Description"
 
     # Create a git commit
     git add .
@@ -38,3 +46,4 @@ while IFS=',' read -r BugID Description Branch DevName Priority; do
         exit 1
     fi
 done < "$CSV_FILE"
+
