@@ -1,0 +1,45 @@
+    1  sudo nano ./.bashrc
+    2  nano ./.bashrc
+    3  source ./.bashrc
+    4  clear
+    5  sudo hostnamectl set-hostname
+    6  hostnamectl set-hostname miryam-Virtual-Box
+    7  hostnamectl
+    8  mkdir ~/LinuxExam
+    9  sudo apt install imagemagick
+   10  sudo mkdir ~/LinuxExam
+   11  cd ~/LinuxExam/
+   12  touch gif_generator.sh
+   13  sudo touch gif_generator.sh
+   14  sudo nano gif_generator.sh
+   15  fg
+   16  curl -o dog.jpg https://www.shutterstock.com/image-photo/dog-surprised-shock-expression-eyes-260nw-2489343993.jpg
+   17  sudo apt install curl 
+   18  ls
+   19  curl -o dog.jpg https://www.shutterstock.com/image-photo/dog-surprised-shock-expression-eyes-260nw-2489343993.jpg
+   20  sudo curl -o dog.jpg https://www.shutterstock.com/image-photo/dog-surprised-shock-expression-eyes-260nw-2489343993.jpg
+   21  ls
+   22  clear
+   23  sudo curl -o dog.jpg https://images.stockcake.com/public/5/7/e/57ed41a9-dfa2-4535-91f4-2be16a5c8049_large/elegant-concert-hall-stockcake.jpg
+   24  ls
+   25  mv dog.jpg image.jpg
+   26  sudo mv dog.jpg image.jpg
+   27  ./gif_generator.sh image.jpg 50 10 18 animation.gif
+   28  ls -l
+   29  sudo chown -R $USER ~/LinuxExam
+   30  chmod u+x gif_generator.sh 
+   31  ls -l
+   32  ./gif_generator.sh image.jpg 50 10 18 animation.gif
+   33  ls
+   34  cd Outputs/
+   35  ls
+   36  clear
+   37  ./gif_generator.sh image.jpg 50 10 18 animation.gif
+   38  cd ..
+   39  ./gif_generator.sh image.jpg 50 10 18 animation.gif
+   40  cd Outputs/
+   41  ls
+   42  cd Q3/
+   43  ls
+   44  cd ..
+   45  history > history.txt
