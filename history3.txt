@@ -1,0 +1,39 @@
+    1  sudo nano ./.bashrc
+    2  nano ./.bashrc
+    3  source ./.bashrc
+    4  clear
+    5  sudo hostnamectl set-hostname
+    6  hostnamectl set-hostname miryam-Virtual-Box
+    7  hostnamectl
+    8  mkdir ~/LinuxExam
+    9  sudo apt install imagemagick
+   10  cd LinuxExam/
+   11  git add .
+   12  git commit -m "LinuxExamB"
+   13  git status
+   14  git remote -v
+   15  git push origin main
+   16  history > history_2.txt
+   17  git log
+   18  sudo nano commit.sh
+   19  cat commit.sh 
+   20  sudo chmod +x commit.sh 
+   21  ./commit.sh
+   22  sudo chown miryamtbash bugs.csv 
+   23  sudo chown miryamtbash commit.sh 
+   24  ./commit.sh
+   25  sudo nano commit.sh 
+   26  git checkout -b BR_1
+   27  git push origin BR_1
+   28  git checkout -b BR_2
+   29  git push origin BR_2
+   30  ./commit.sh
+   31  git push origin BR_1
+   32  ./commit.sh
+   33  git checkout main 
+   34  git add.
+   35  git add .
+   36  git commit -m "Finished Added Question 2"
+   37  git push
+   38  git push origin main 
+   39  history > history3.txt
