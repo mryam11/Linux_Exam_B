@@ -10,12 +10,9 @@ if [ ! -f "$CSV_FILE" ]; then
 fi
 
 # Read data from the CSV (ensure that IFS is set correctly to avoid trailing whitespace issues)
-while IFS=',' read -r BugID Description Branch DevName Priority GitHubURL; do
-    # Skip the header row by checking if $BugID is the header value
-    if [[ "$BugID" == "BugID" ]]; then
-        continue
-    fi
-    
+# Skip the first line (header row) using awk's NR variable
+tail -n +2 "$CSV_FILE" | while IFS=',' read -r BugID Description Branch DevName Priority GitHubURL; do
+
     # Ensure that required fields are not empty
     if [ -z "$BugID" ] || [ -z "$Description" ] || [ -z "$Branch" ] || [ -z "$DevName" ] || [ -z "$Priority" ] || [ -z "$GitHubURL" ]; then
         echo "Error: Missing required field in CSV."
@@ -45,5 +42,6 @@ while IFS=',' read -r BugID Description Branch DevName Priority GitHubURL; do
         echo "Error: Push to branch $Branch failed for BugID $BugID"
         exit 1
     fi
-done < "$CSV_FILE"
+
+done
 
